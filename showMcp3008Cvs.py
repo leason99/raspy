@@ -34,7 +34,7 @@ data=np.array(csv)
 time=data[:,0]
 
 
-fig, (ax0, ax1) = plt.subplots(nrows=2)
+fig, (ax0, ax1) = plt.subplots(nrows=2 ,figsize=(12,8 ))
 
 ax0.plot(time, data[:,1]*5/1024)
 ax0.set_ylabel('voltage(V)')
@@ -50,13 +50,13 @@ f = np.linspace(0, rate/2, len(p))
 
 freqs = np.fft.fftfreq(data[:,1].size, 1/rate)
 idx = np.argsort(freqs)
-idx2=idx[int(idx.shape[0]/2):int(idx.shape[0]/2)+10]
+idx2=idx[int(idx.shape[0]/2):int(idx.shape[0]/2)+20]
+ax1.set_xlabel("Frequence(Hz)")
+ax1.set_ylabel("Amplitude")
+ax1.set_title('Samplerate: {}   N: {}  '.format(rate,n), fontsize=16)
 ax1.bar(freqs[idx2], p[idx2])
 
 
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
 
-
-#ax1.plot(f,p)
-#ax1.set_xticks(f)
-#ax1.set_yticks(np.arange(0,int(max(p))+1,0.5))
 plt.show()

@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 
 
-times=3000
+times=10000
 
 SPI_PORT= 0
 SPI_DEVICE = 0
